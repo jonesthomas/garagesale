@@ -39,5 +39,20 @@ describe "Static pages" do
       visit '/static_pages/about'
       expect(page).to have_title("Eudora | About Us")
     end
-  end
+  end #end about page
+
+ 	describe "Contact page" do
+
+    it "should have the content 'Contact'" do
+      visit '/static_pages/contact'
+      expect(page).to have_content('Contact')
+    end
+
+    it "should have the title 'Contact'" do
+      visit '/static_pages/contact'
+      expect(page).to have_title("Eudora | Contact")
+    end
+  end #end contact page
+
+
 end
