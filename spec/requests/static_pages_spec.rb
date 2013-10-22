@@ -59,5 +59,20 @@ describe "Static pages" do
       visit '/static_pages/contact'
       expect(page).to have_title("#{base_title} | Contact")
     end
-  end
+  end # end Contact page
+
+  describe "Browse page" do
+
+    it "should have the content 'Browse'" do
+      visit '/static_pages/browse'
+      expect(page).to have_content('Browse')
+    end
+
+    it "should have the title 'Browse'" do
+      visit '/static_pages/browse'
+      expect(page).to have_title("#{base_title} | Browse")
+    end
+  end # end browse page
+
+
 end
