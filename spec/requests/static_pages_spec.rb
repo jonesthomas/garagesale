@@ -8,20 +8,36 @@ describe "Static pages" do
       visit '/static_pages/home'
       expect(page).to have_content('Eudora')
     end
-  end #end home page
 
-	describe "Help page" do
-		it "should have the content 'Help' " do
- 			visit '/static_pages/help'
+    it "should have the title 'Home'" do
+      visit '/static_pages/home'
+      expect(page).to have_title("Eudora | Home")
+    end
+  end
+
+  describe "Help page" do
+
+    it "should have the content 'Help'" do
+      visit '/static_pages/help'
       expect(page).to have_content('Help')
-		end
-	end # end Help page
+    end
 
-	describe "About page" do
-		it "should have the content 'About Us' " do
- 			visit '/static_pages/about'
+    it "should have the title 'Help'" do
+      visit '/static_pages/help'
+      expect(page).to have_title("Eudora | Help")
+    end
+  end
+
+  describe "About page" do
+
+    it "should have the content 'About Us'" do
+      visit '/static_pages/about'
       expect(page).to have_content('About Us')
-		end
-	end # end Help page
+    end
 
-end # end of Static Pages
+    it "should have the title 'About Us'" do
+      visit '/static_pages/about'
+      expect(page).to have_title("Eudora | About Us")
+    end
+  end
+end
