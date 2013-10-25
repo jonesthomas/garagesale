@@ -87,6 +87,9 @@ textarea {
 
 footer a {
   /*color: #555;*/
+  /*padding: 14px 20px 16px;*/
+  font-family: 'Telex', sans-serif;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
   color: #45aeea;
 }
 
@@ -6243,8 +6246,8 @@ a.badge:focus {
   -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
           border-radius: 6px;
-	background-image: url('./images/space.jpg');
-  background-repeat: repeat; 
+	background-image: url(image_path('space.jpg'));
+  background-size: cover;
 
      
 }
