@@ -2,15 +2,22 @@
 @import url(//fonts.googleapis.com/css?family=Telex);
 
 .jonespage {
+			h1{
+ 			text-align: center;
+			}
 	    margin-top:60px;
 }
 
-
+.railslogo{
+	height:43px;
+	width:55px;
+}
 
 /* sidebar */
 
 aside {
   section {
+
     padding: 10px 0;
     border-top: 1px solid $grayLighter;
     &:first-child {
@@ -18,6 +25,7 @@ aside {
       padding-top: 0;
     }
     span {
+
       display: block;
       margin-bottom: 3px;
       line-height: 1;
@@ -133,16 +141,17 @@ textarea {
 
 /* footer */
 
-/*footer {
+footer {
   margin-top: 45px;
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
-  color: #999;*/
-/*}*/
+  color: #999;
+}
 
 footer a {
   /*color: #555;*/
   /*padding: 14px 20px 16px;*/
+
   font-family: 'Telex', sans-serif;
   text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
   color: #45aeea;
@@ -437,6 +446,7 @@ a:focus {
 }
 
 .row {
+
   margin-left: -20px;
   *zoom: 1;
 }
