@@ -19,5 +19,6 @@ describe "User pages" do
 		it {should have_selector('h1', text: user.name) }
 		#it {should have_selector('title', text: user.name ) } #skipping this as I am not able to get it to work
 		#it {should have_title("#{base_title} | Michael Hartl")} #this works, so title is provided
+		it {should have_title("#{base_title} | #{user.name}")} #this was the compromise to get it to work
 	end#end profile page
 end
