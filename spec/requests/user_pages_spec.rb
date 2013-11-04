@@ -21,4 +21,29 @@ describe "User pages" do
 		#it {should have_title("#{base_title} | Michael Hartl")} #this works, so title is provided
 		it {should have_title("#{base_title} | #{user.name}")} #this was the compromise to get it to work
 	end#end profile page
+
+	describe "signup" do
+		before { visit signup_path }
+		let (:submit) {"Create my account"}
+		
+		describe "with invalid information" do
+			it "should not create a user" do
+				expect {click_button submit }.not_to change(User, :count)
+			end #not create a user
+		end #with invalid information
+		
+		describe "with valid information" do
+			before do
+				fill_in "Name", 				with: "Example User"
+				fill_in "Email", 				with:	"user@example.com"
+				fill_in "Password", 		with: "foobar"
+				fill_in "Confirmation", with: "foobar"
+			end 
+			it "should create a user" do
+				expect {click_button submit}.to change(User, :count).by(1)
+			end		
+		end #with valid information
+		
+	end #end signup
+
 end
