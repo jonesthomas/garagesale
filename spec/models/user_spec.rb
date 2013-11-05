@@ -19,6 +19,11 @@ describe User do
 
   it { should be_valid }
 
+	describe "remember token" do
+		before { @user.save }
+		its	(:remember_token) {should_not be_blank}
+	end #end remember token
+	
 	describe "with a password that is too short" do
 		before {@user.password=@user.password_confirmation="a"*5 }
 		it {should be_invalid}
