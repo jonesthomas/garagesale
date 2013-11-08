@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :signed_in_user, only: [:edit, :update]
+  before_action :signed_in_user, only: [:index, :edit, :update]
   before_action :correct_user,   only: [:edit, :update]
   def new
     @user = User.new
@@ -18,8 +18,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def index
+    @users = User.paginate(page: params[:page])
+  end
+
 	def show
     @user = User.find(params[:id])
+		#correct_user # maybe use this later if you want to limit page access to only the user
   end
 
   def create
