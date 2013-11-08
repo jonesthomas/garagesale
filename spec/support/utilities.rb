@@ -12,3 +12,12 @@ def sign_in(user, options={})
   end
 
 end
+
+def full_title(page_title)
+  base_title = "Eudora"
+  if page_title.empty?
+    base_title
+  else
+    "#{base_title} | #{page_title}"
+  end
+end
