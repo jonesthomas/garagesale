@@ -6,6 +6,12 @@ describe "Static pages" do
 
    describe "Home page" do
 
+    it "should have the content 'Blog'" do
+      #visit '/static_pages/home'
+			visit root_path
+      expect(page).to have_content('Blog')
+    end
+
     it "should have the content 'Eudora'" do
       #visit '/static_pages/home'
 			visit root_path
@@ -86,4 +92,5 @@ describe "Static pages" do
   end # end browse page
 
 
-end
+
+end # end static page
