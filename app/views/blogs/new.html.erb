@@ -4,7 +4,7 @@
 <div class="row">
   <div class="span6 offset3">
     <%= form_for(@blog) do |f| %>
-
+      <%= render 'shared/blog_error_messages' %>
       <%= f.label :title %>
       <%= f.text_field :title %>
 
@@ -12,7 +12,9 @@
       <%= f.text_field :author %>
 
       <%= f.label :body %>
-      <%= f.text_field :body %>
+  		<div class="field">
+      	<%= f.text_area :body, placeholder: "Compose new post..." %>
+ 		 </div>
 
       <%= f.submit "Submit Blog", class: "btn btn-large btn-primary" %>
     <% end %>

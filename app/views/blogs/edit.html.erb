@@ -13,7 +13,9 @@
       <%= f.text_field :author %>
 
       <%= f.label :body %>
-      <%= f.text_field :body %>
+  		<div class="field">
+      	<%= f.text_area :body, placeholder: "Compose new post..." %>
+ 		 </div>
 
       <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
     <% end %>
