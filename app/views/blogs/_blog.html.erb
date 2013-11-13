@@ -1,5 +1,6 @@
 <li> 
 <h2><%= link_to_unless_current blog.title, blog %></h2>
-<p1> By Justin Jones and Dave Thomas </p2>
+	 <%=image_tag(image_path('person.jpg'), alt: "metamojo", class: "bloglogo")%>
+
  <%= simple_format blog.body %>
 </li>
