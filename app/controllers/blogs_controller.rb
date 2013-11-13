@@ -8,7 +8,7 @@ class BlogsController < ApplicationController
   end
 
 	def index
-    #@blogs = Blog.paginate(page: params[:page])
-		@blogs=Blog.all
+    @blogs = Blog.paginate(page: params[:page])
+		#@blogs=Blog.all
 	end
 end
