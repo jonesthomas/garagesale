@@ -3,7 +3,7 @@
 	<%=image_tag(image_path('person.jpg'), alt: "metamojo", class: "bloglogo")%>
 	<%=blog.author%>
   <div class="timestamp">
-		<%= blog.created_at.strftime("Posted on %A, %m/%d/%Y.") %>
+		<%= blog.created_at.strftime("Posted on  %A, %B #{blog.created_at.day.ordinalize}  %Y.") %>
   </div>	
 	<div class="blogbody">
  <%=blog.body %>
