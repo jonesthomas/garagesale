@@ -2,5 +2,8 @@
 <h2><%= link_to_unless_current blog.title, blog %></h2>
 	<%=image_tag(image_path('person.jpg'), alt: "metamojo", class: "bloglogo")%>
 	<%=blog.author%>
+  <div class="timestamp">
+    Posted <%= time_ago_in_words(blog.created_at) %> ago.
+  </div>
  <%= simple_format blog.body %>
 </li>
