@@ -4,6 +4,8 @@
 	<%=blog.author%>
   <div class="timestamp">
     Posted <%= time_ago_in_words(blog.created_at) %> ago.
-  </div>
- <%= simple_format blog.body %>
+  </div>	
+	<div class="blogbody">
+ <%=blog.body %>
+	</div>
 </li>
