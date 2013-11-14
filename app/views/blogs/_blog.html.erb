@@ -6,6 +6,6 @@
 		<%= blog.created_at.strftime("Posted on  %A, %B #{blog.created_at.day.ordinalize}  %Y.") %>
   </div>	
 	<div class="blogbody">
- <%=blog.body %>
+ <%=simple_format blog.body %>
 	</div>
 </li>
