@@ -3,7 +3,7 @@
 	<%=image_tag(image_path('person.jpg'), alt: "metamojo", class: "bloglogo")%>
 	<%=blog.author%>
   <div class="timestamp">
-    Posted <%= time_ago_in_words(blog.created_at) %> ago.
+		<%= blog.created_at.strftime("Posted on %A, %m/%d/%Y.") %>
   </div>	
 	<div class="blogbody">
  <%=blog.body %>
