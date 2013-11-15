@@ -39,5 +39,20 @@ describe Blog do
 		before  {@blog.title="a" *10001 } 
 		it {should_not be_valid}
 	end # body is too long
+
+	describe "blog order" do
+		let!(:older_blog) do
+			FactoryGirl.create(:blog, created_at: 1.day.ago)
+		end
+
+		let!(:newer_blog) do
+			FactoryGirl.create(:blog, created_at: 1.hour.ago)
+		end
+
+		
+		it "should have the blogs in the right order" do
+			expect(Blog.all.to_a).to eq [newer_blog, older_blog]
+		end
+	end #blog order
 end # end the blog
 
