@@ -1,5 +1,5 @@
 Eudora::Application.routes.draw do
-  get "blogs/new"
+  #get "blogs/new"
 	resources :users
 	resources :blogs
   resources :sessions, only: [:new, :create, :destroy]
