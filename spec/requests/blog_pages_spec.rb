@@ -113,7 +113,7 @@ describe "BlogPages" do
 			 describe "after saving the blog" do
         before { click_button submit }
         let(:blog) { Blog.find_by(title: "Blog 40") }
-
+				it { should have_content(blog.author) }
 				it { should have_link('Edit') }
 				it { should have_link('Back') }
         it { should have_title(blog.title) }
