@@ -98,35 +98,79 @@ describe "BlogPages" do
         it { should have_content('error') }
       end #end after submission
 
-##################3
+
 
 			describe "with valid information" do
-			before do
-				fill_in "Title", 				with: "Blog 40"
-				fill_in "Author", 				with:	"Justin Jones"
-				fill_in "Body", 		with: "Made it"
-			end 
-			it "should create a blog" do
-				expect {click_button submit}.to change(Blog, :count).by(1)
-			end
+				before do
+					fill_in "Title", 				with: "Blog 40"
+					fill_in "Author", 				with:	"Justin Jones"
+					fill_in "Body", 		with: "Made it"
+				end 
+				it "should create a blog" do
+					expect {click_button submit}.to change(Blog, :count).by(1)
+				end
 
-			 describe "after saving the blog" do
-        before { click_button submit }
-        let(:blog) { Blog.find_by(title: "Blog 40") }
-				it { should have_content(blog.author) }
-				it { should have_link('Edit') }
-				it { should have_link('Back') }
-        it { should have_title(blog.title) }
-        it { should have_selector('div.alert.alert-success', text: 'New Post') }
-      end #end after saving the blog	
-		end #with valid information
+				 describe "after saving the blog" do
+		      before { click_button submit }
+		      let(:blog) { Blog.find_by(title: "Blog 40") }
+					it { should have_content(blog.author) }
+					it { should have_link('Edit') }
+					it { should have_link('Back') }
+		      it { should have_title(blog.title) }
+		      it { should have_selector('div.alert.alert-success', text: 'New Post') }
+		    end #end after saving the blog	
+			end #with valid information
 
-
-####################
 		end#end creating a new blog
 
 	end #new blog page
+	
+	##########################
 
+	describe "edit blog page" do
+    let(:blog) { FactoryGirl.create(:blog) }
+    before do
+			basic_auth('admin1', 'ILcorporations1234!!')
+      visit edit_blog_path(blog)
+    end
 
+    describe "page" do
+      it { should have_content("Update This Post") }
+      it { should have_title("Edit Post") }
+
+    end #end page
+
+    describe "with invalid information" do
+      let(:new_title)  { " " }
+			before do
+
+        fill_in "Title",             with: new_title
+        click_button "Save changes"
+      end
+
+      it { should have_content('error') }
+    end #end with invalid info
+
+		describe "with valid information" do
+      let(:new_title)  { "New Name" }
+      let(:new_author) { "JJ" }
+			let(:new_body)   {"Yep its new"}
+      before do
+        fill_in "Title",             with: new_title
+        fill_in "Author",            with: new_author
+        fill_in "Body",         		 with: new_body 
+        click_button "Save changes"
+      end
+
+      it { should have_title(new_title) }
+      it { should have_selector('div.alert.alert-success') }
+      specify { expect(blog.reload.title).to  eq new_title }
+      specify { expect(blog.reload.author).to eq new_author }
+      specify { expect(blog.reload.body).to eq new_body }
+    end #end edit with valid info
+
+  end #end edit page
+
+##########################3
 
 end # end Blog pages
