@@ -39,6 +39,21 @@ describe "BlogPages" do
 			#assert_equal 401, page.status_code
       specify { expect(page.status_code).to  eq 401 }
 		end #should block access
+		
+##############
+		describe "should block access with invalid password" do
+			before do	
+				basic_auth('admin', 'wrong')					
+				visit new_blog_path
+			end
+			
+			it { should_not have_title(("#{base_title} | New Blog")  ) }
+			it { should_not have_content('New Blog') }
+			#assert_equal 401, page.status_code
+      specify { expect(page.status_code).to  eq 401 }
+		end #should block access
+
+########3
 
 		describe "should visit new blog page with valid password" do
 			before do
