@@ -43,7 +43,7 @@ describe "BlogPages" do
 
 		describe "should block access with invalid password" do
 			before do	
-				basic_auth('admin', 'wrong')					
+				basic_auth('admin1', 'wrong')					
 				visit new_blog_path
 			end
 			
@@ -53,10 +53,10 @@ describe "BlogPages" do
       specify { expect(page.status_code).to  eq 401 }
 		end #should block access
 
-########3
+
 		describe "should block access with invalid user" do
 			before do	
-				basic_auth('me', 'secret')					
+				basic_auth('me', 'ILcorporations1234!!')					
 				visit new_blog_path
 			end
 			
@@ -65,11 +65,11 @@ describe "BlogPages" do
 			#assert_equal 401, page.status_code
       specify { expect(page.status_code).to  eq 401 }
 		end #should block access
-##########
+
 
 		describe "should visit new blog page with valid password" do
 			before do
-				basic_auth('admin', 'secret')			
+				basic_auth('admin1', 'ILcorporations1234!!')			
 				visit new_blog_path
 			end
 			
@@ -77,7 +77,29 @@ describe "BlogPages" do
 			it { should have_content('New Blog') }
       specify { expect(page.status_code).to  eq 200 }
 		end #visit new blog page with valid password
-		
+##################################
+		describe "creating a new blog" do
+			let (:submit) {"Submit Blog"}			
+			before do
+				basic_auth('admin1', 'ILcorporations1234!!')
+				visit new_blog_path
+			end
+	
+			describe "with blank information" do
+				it "should not create a blog" do
+					expect {click_button submit }.not_to change(Blog, :count)
+				end
+			end #with blank
+
+			describe "after submission" do
+        before { click_button submit }
+
+        it { should have_title('New Blog') }
+        it { should have_content('error') }
+      end #end after submission
+
+		end#end creating a new blog
+##############################		
 	end #new blog page
 
 

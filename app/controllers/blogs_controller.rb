@@ -48,7 +48,7 @@ private
   	
 		def authenticate
     authenticate_or_request_with_http_basic do |name, password|
-      name == "admin" && password == "secret"
+      name == "admin1" && password == "ILcorporations1234!!"
     end
   end
 end
