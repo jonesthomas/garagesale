@@ -77,7 +77,7 @@ describe "BlogPages" do
 			it { should have_content('New Blog') }
       specify { expect(page.status_code).to  eq 200 }
 		end #visit new blog page with valid password
-##################################
+
 		describe "creating a new blog" do
 			let (:submit) {"Submit Blog"}			
 			before do
@@ -98,8 +98,33 @@ describe "BlogPages" do
         it { should have_content('error') }
       end #end after submission
 
+##################3
+
+			describe "with valid information" do
+			before do
+				fill_in "Title", 				with: "Blog 40"
+				fill_in "Author", 				with:	"Justin Jones"
+				fill_in "Body", 		with: "Made it"
+			end 
+			it "should create a blog" do
+				expect {click_button submit}.to change(Blog, :count).by(1)
+			end
+
+			 describe "after saving the blog" do
+        before { click_button submit }
+        let(:blog) { Blog.find_by(title: "Blog 40") }
+
+				it { should have_link('Edit') }
+				it { should have_link('Back') }
+        it { should have_title(blog.title) }
+        it { should have_selector('div.alert.alert-success', text: 'New Post') }
+      end #end after saving the blog	
+		end #with valid information
+
+
+####################
 		end#end creating a new blog
-##############################		
+
 	end #new blog page
 
 
