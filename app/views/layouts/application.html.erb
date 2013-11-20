@@ -2,13 +2,9 @@
 <html>
   <head>
     <title><%= full_title(yield(:title)) %></title>
-		<% unless mobile? %>
    	 <%= stylesheet_link_tag "application", media: "all",
                                            "data-turbolinks-track" => true %>
-		<%else%>
-			<%= stylesheet_link_tag "mobile" %>
-  		<meta name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
-		<% end%>
+
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %>
