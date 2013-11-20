@@ -1,7 +1,7 @@
 /* Users index */
 @import "bootstrap";
 @import url(//fonts.googleapis.com/css?family=Telex);
-@media all and (max-width:600px) {
+
 
 /* Users index */
 
@@ -6767,4 +6767,4 @@ i[class^="icon-"] {
 .affix {
   position: fixed;
 }
-}
+
