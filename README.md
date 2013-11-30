@@ -1,4 +1,5 @@
 # Ruby on Rails Eudora
+Adding for the new repo
 Value Proposition:
 Users: Eudora provides real time location based alerts and push notifications to your app and email based on the topics you're following.
 
