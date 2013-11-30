@@ -8,19 +8,23 @@
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+
   </head>
   <body>
-    <%= render 'layouts/header' %>
-    <div class="container">
- 			
-			<div class="jonespage">
+    <%= render 'layouts/menu' %> 			
+
 			<% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>"><%= value %></div>
       <% end %>
      		 <%= yield %>
-    	</div>
-      <%= render 'layouts/footer' %>
+
+      <%= render 'layouts/footer2' %>
       <%= debug(params) if Rails.env.development? %>
-    </div>
+
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
   </body>
 </html>
