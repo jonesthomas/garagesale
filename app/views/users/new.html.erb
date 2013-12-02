@@ -5,9 +5,10 @@
 <div class="jonestitle"> <h1>Sign up</h1> </div>
 
 <div class="row">
-	<div class="col-md-1 col-centered">
+	<div class="col-xs-2 col-centered">
 
     <%= form_for(@user) do |f| %>
+
 			<%= render 'shared/error_messages' %>
 
       <%= f.label :name %>
@@ -15,12 +16,14 @@
 
       <%= f.label :email %>
       <%= f.text_field :email %>
-			
+		
       <%= f.label :password %>
       <%= f.password_field :password %>
 
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation %>
+
+
 			<div class="jonestopspacer">
       <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
 			</div>
