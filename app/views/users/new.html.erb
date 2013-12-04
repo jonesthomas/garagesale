@@ -13,16 +13,18 @@
 
       <%= f.label :name %>
 		  <%= f.text_field :name %>
-
+		<div class="jonestopspacer">
       <%= f.label :email %>
       <%= f.text_field :email %>
-		
+		</div>
+		<div class="jonestopspacer">
       <%= f.label :password %>
       <%= f.password_field :password %>
-
+		</div>
+		<div class="jonestopspacer">
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation %>
-
+		</div>
 
 			<div class="jonestopspacer">
       <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
