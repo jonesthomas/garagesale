@@ -1,5 +1,5 @@
 @import "bootstrap";
-
+$grayLighter: #999;
 
 /* Users index */
 .jumbotron{
@@ -45,4 +45,27 @@ footer {
     margin: 0 auto;
 }
 
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-top: 1px solid $grayLighter;
+    &:last-child {
+      border-bottom: 1px solid $grayLighter;
+    }
+  }
+}
+
+.bloglogo{
+	height:52px;
+	width:52px;
+}
+
+.blogbody {
+		margin-top:10px;
+	  font-size: 18.5px;
+
+}
 
