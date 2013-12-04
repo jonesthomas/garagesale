@@ -1,5 +1,6 @@
 <% provide(:title, 'All Posts') %>
-<h1>All Posts</h1>
+<div class="jonestitle"> <h1>All Posts</h1> </div>
+<div class="container">
 <%= link_to 'New Post', new_blog_path %>
 
 <%= will_paginate %>
@@ -8,3 +9,5 @@
 	 <%= link_to 'New Post', new_blog_path %>
 </ul>
 <%= will_paginate %>	
+
+</div>
