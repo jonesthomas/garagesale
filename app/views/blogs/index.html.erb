@@ -1,13 +1,14 @@
 <% provide(:title, 'All Posts') %>
 <div class="jonestitle"> <h1>All Posts</h1> </div>
-<div class="container">
-<%= link_to 'New Post', new_blog_path %>
+
+
 
 <%= will_paginate %>
 <ul class="blogs">
+<%= link_to 'New Post', new_blog_path %>
 	 <%= render @blogs %>
 	 <%= link_to 'New Post', new_blog_path %>
 </ul>
 <%= will_paginate %>	
 
-</div>
+
