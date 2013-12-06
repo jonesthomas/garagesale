@@ -66,7 +66,7 @@ footer {
 .blogbody {
 		margin-top:10px;
 		padding-right:27px;
-	 font-size: 18.5px; 
+	  font-size: 18.5px; 
 
 }
 
@@ -83,7 +83,11 @@ footer {
   }
 }
 
-
+@media(max-width:767px)
+				{.blogbody{font-size: 100%;}}
+@media(min-width:768px){.blogbody{font-size: 110%;}}
+@media(min-width:992px){.blogbody{font-size: 120%;}}
+@media(min-width:1200px){.blogbody{font-size: 130%;}}
 
 
  
