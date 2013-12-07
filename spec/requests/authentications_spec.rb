@@ -21,7 +21,7 @@ describe "Authentication" do
       it { should have_selector('div.alert.alert-error', text: 'Invalid') }
 
 			describe "after visiting another page" do
-        before { click_link "Home" }
+        before { click_link "EUDORA" }
         it { should_not have_selector('div.alert.alert-error') }
    		 end # end after visiting another page
     end #end with invalid information
@@ -35,7 +35,7 @@ describe "Authentication" do
       end
 
       it { should have_title(user.name) }
-      it { should have_link('Users',       href: users_path) }
+      #it { should have_link('Users',       href: users_path) }
       it { should have_link('Profile',     href: user_path(user)) }
       it { should have_link('Settings',    href: edit_user_path(user)) }
       it { should have_link('Sign out',    href: signout_path) }

@@ -135,7 +135,7 @@ describe "BlogPages" do
     end
 
     describe "page" do
-      it { should have_content("Update This Post") }
+      it { should have_content("Edit Post") }
       it { should have_title("Edit Post") }
 
     end #end page
