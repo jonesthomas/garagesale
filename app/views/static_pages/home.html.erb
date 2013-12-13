@@ -1,4 +1,9 @@
-    <%= render 'layouts/jumbotron' %>
+<% if signed_in? %>
+	<div class="container">
+		<%= render 'shared/user_info' %>
+	</div>
+<%else%>
+<%= render 'layouts/jumbotron' %>
 <div class="container">
           <div class="row">
             <div class="col-md-4">
@@ -40,6 +45,6 @@
 
 
 
-
+<%end%>
 
 
