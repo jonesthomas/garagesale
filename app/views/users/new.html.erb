@@ -12,23 +12,24 @@
 			<%= render 'shared/error_messages' %>
 
       <%= f.label :name %>
-		  <%= f.text_field :name %>
-		<div class="jonestopspacer">
-      <%= f.label :email %>
-      <%= f.text_field :email %>
-		</div>
-		<div class="jonestopspacer">
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-		</div>
-		<div class="jonestopspacer">
-      <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation %>
-		</div>
+		  <%= f.text_field :name, class: "form-control input-md" %>
 
-			<div class="jonestopspacer">
-      <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
-			</div>
+
+      <%= f.label :email %>
+      <%= f.text_field :email, class: "form-control input-md" %>
+
+
+      <%= f.label :password %>
+      <%= f.password_field :password, class: "form-control input-md" %>
+
+
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation, class: "form-control input-md" %>
+
+
+
+      <%= f.submit "Create my account", class: "btn btn-lg btn-primary" %>
+
     <% end %>
 	</div>
 </div>

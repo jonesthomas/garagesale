@@ -1,6 +1,13 @@
 @import "bootstrap";
 $grayLighter: #999;
 
+
+@mixin box_sizing {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 /* Users index */
 .jumbotron{
 	/*adding here*/
@@ -92,6 +99,21 @@ footer {
 @media(min-width:768px){.blogbody{font-size: 110%;}}
 @media(min-width:992px){.blogbody{font-size: 120%;}}
 @media(min-width:1200px){.blogbody{font-size: 130%;}}
+
+/* forms */
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+ /* width: 100%;*/ /* This will give the button set to 100%*/
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+
+input {
+  height: auto !important;
+}
+
+
 
 
  

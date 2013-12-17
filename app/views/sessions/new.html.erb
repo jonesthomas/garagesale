@@ -5,17 +5,17 @@
 	<div class="col-xs-6 col-xs-offset-3">
     <%= form_for(:session, url: sessions_path) do |f| %>
 
-    <br>  <%= f.label :email %> <br>
-      <%= f.text_field :email, class:"form-control input-md" %>
+    <%= f.label :email %>
+    <%= f.text_field :email, class:"form-control input-md" %>
 
-		<div class="jonestopspacer">
-     <br> <%= f.label :password %><br>
+
+     <%= f.label :password %>
       <%= f.password_field :password, class: "form-control input-md" %>
-    </div>
-		<div class="jonestopspacer">
-      <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
+   
+
+      <%= f.submit "Sign in", class: "btn btn-lg btn-primary" %>
     <% end %>
-    </div>
+
 		<div class="jonestopspacer">
     <p>New user? <%= link_to "Sign up now!", signup_path %></p>
     </div>
