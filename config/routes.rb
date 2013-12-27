@@ -1,6 +1,8 @@
 Eudora::Application.routes.draw do
+  #get "messages/new"
   #get "blogs/new"
 	resources :users
+	resources :messages, only: [:new, :create]
 	#resources :blogs #this was disabled to allow the wordpress site to happen
   resources :sessions, only: [:new, :create, :destroy]
   #get "static_pages/home"

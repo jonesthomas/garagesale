@@ -8,4 +8,9 @@ class UserMailer < ActionMailer::Base
     mail(to: @user.email, subject: 'Welcome to Eudora')
   end
 
+	def send_comment(message)
+  	@message = message
+  	email = "metarepublicinc@gmail.com"
+    mail(to: email, subject: 'You have a comment from Eudora')
+	end
 end
