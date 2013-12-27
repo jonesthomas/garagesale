@@ -12,7 +12,7 @@ class MessagesController < ApplicationController
 			flash[:success] = "Comment sent! Thank you for your feedback."
        # Tell the UserMailer to send the email after save
        UserMailer.send_comment(@message).deliver
-      redirect_to new_message_path
+      redirect_to contact_path
     else
       render 'new'
     end
@@ -20,6 +20,6 @@ class MessagesController < ApplicationController
 
 private
     def message_params
-      params.require(:message).permit(:body)
+      params.require(:message).permit(:name, :email, :body)
     end
 end
