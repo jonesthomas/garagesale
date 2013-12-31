@@ -1,6 +1,13 @@
 class UserMailer < ActionMailer::Base
   default from: "metarepublicinc@gmail.com"
 
+
+	def password_reset(user)
+  	@user = user
+    mail(to: @user.email, subject: 'Password Reset')
+	end
+
+
  
   def welcome_email(user)
     @user = user

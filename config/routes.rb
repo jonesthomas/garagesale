@@ -1,6 +1,8 @@
 Eudora::Application.routes.draw do
+  get "password_resets/new"
   #get "messages/new"
   #get "blogs/new"
+	resources :password_resets
 	resources :users
 	resources :messages, only: [:new, :create]
 	#resources :blogs #this was disabled to allow the wordpress site to happen
