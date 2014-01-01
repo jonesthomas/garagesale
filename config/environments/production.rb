@@ -77,4 +77,7 @@ Eudora::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+	###Add in default URL for the password forget
+	config.action_mailer.default_url_options = { host: "https://limitless-springs-8453.herokuapp.com" }
 end
