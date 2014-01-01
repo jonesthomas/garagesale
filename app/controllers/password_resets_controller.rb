@@ -12,7 +12,8 @@ def create
 end
 
 def edit
-  @user = User.find_by_password_reset_token!(params[:id])
+  #@user = User.find_by_password_reset_token!(params[:id])
+  @user = User.find_by_password_reset_token(params[:id])
 end
 
 def update
