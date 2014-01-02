@@ -3,6 +3,7 @@ require 'spec_helper'
 describe "PasswordResets" do
   before(:all) { 10.times { FactoryGirl.create(:user) } }
   after(:all)  { User.delete_all }
+
   let(:base_title) { "Eudora" }
   subject { page }
 
@@ -18,8 +19,6 @@ describe "PasswordResets" do
 		end # end invalid submission
 
 		describe "valid submission" do
-
-
 			before do
 				fill_in "Email", 				with:	"person_1@example.com"
 				click_button "Send Email" 
