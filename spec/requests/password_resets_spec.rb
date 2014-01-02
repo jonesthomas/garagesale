@@ -1,8 +1,9 @@
 require 'spec_helper'
 
 describe "PasswordResets" do
+  before(:all) { 10.times { FactoryGirl.create(:user) } }
+  after(:all)  { User.delete_all }
   let(:base_title) { "Eudora" }
-  let(:user) { FactoryGirl.create(:user) }
   subject { page }
 
 	describe "password forget page" do
@@ -17,11 +18,15 @@ describe "PasswordResets" do
 		end # end invalid submission
 
 		describe "valid submission" do
+
+
 			before do
-				fill_in "Email", 				with:	"Person_1@example.com"
+				fill_in "Email", 				with:	"person_1@example.com"
+				click_button "Send Email" 
 			end
-			before { click_button "Send Email" }
-			it {should have_content("Email sent with password reset instructions.")  }
+	
+      it { should have_selector('div.alert.alert-success', text: 'Email sent') }
+			it {should have_content("Eudora") }
 		end # end valid submission
 	end#end forget page
 
