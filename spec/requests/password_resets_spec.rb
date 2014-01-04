@@ -76,7 +76,13 @@ describe "PasswordResets" do
 
 					it {should have_content("Password reset has expired")} 
 				end # end reports successful password change
-
+				describe "should gracefully go ro root path on no password token found"do
+					before do
+						visit edit_password_reset_path("invalid")
+					end	
+					it {should have_content("not valid") }
+					it {should have_content("Eudora") }
+				end
 	end # end edit password page
 	
 end
