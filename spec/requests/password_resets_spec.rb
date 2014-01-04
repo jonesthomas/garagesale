@@ -28,25 +28,54 @@ describe "PasswordResets" do
 
 	describe "edit password page" do
 		let(:token) {"KAXq4MFi2BdhprxoRxz3cQ"}
-    let(:password_forgetter) { FactoryGirl.create(:user, password_reset_token: token, password_reset_sent_at: 1.hour.ago) }
-    let(:user) { User.find_by(password_reset_token: token) }
-		before do
-			  #visit "/password_resets/KAXq4MFi2BdhprxoRxz3cQ/edit"
-				visit edit_password_reset_path(password_forgetter.password_reset_token)
-				#visit user_path(password_forgetter)
+		describe "find user and check page" do
+    	let(:password_forgetter) { FactoryGirl.create(:user, password_reset_token: token, password_reset_sent_at: 1.hour.ago) }
+    	let(:user) { User.find_by(password_reset_token: token) }
+			before do
+				visit edit_password_reset_path(password_forgetter.password_reset_token)			
+			end
 				
-		end
-				
-				specify { expect(password_forgetter).to eq user }
-      	specify { expect(password_forgetter.password_reset_token).to eq token }
-        it { should have_title("Reset Password") }
-        it { should have_content("Reset Password") }
+			specify { expect(password_forgetter).to eq user }
+      specify { expect(password_forgetter.password_reset_token).to eq token }
+       it { should have_title("Reset Password") }
+       it { should have_content("Reset Password") }
+		end	# end check page
 				describe "entering invalid information" do
+    			let(:password_forgetter) { FactoryGirl.create(:user, password_reset_token: token, password_reset_sent_at: 1.hour.ago) }
+					before do
+						visit edit_password_reset_path(password_forgetter.password_reset_token)			
+					end
 					before { click_button "Update Password" }
 					it { should have_content("invalid") }
 				end # end entering invalid info
+			
+				describe "reports a successful password change" do
+    			let(:password_forgetter) { FactoryGirl.create(:user, password_reset_token: token, password_reset_sent_at: 1.hour.ago) }
+					let(:new_password) {"foobar"}
+					let(:new_password_confirmation) {"foobar"}
+					before do
+						visit edit_password_reset_path(password_forgetter.password_reset_token)	
+        		fill_in "Password",             						with: new_password
+       			fill_in "Password confirmation",            with: new_password_confirmation	
+						click_button "Update Password"					
+					end
 
+					it {should have_content("Password has been reset")} 
+				end # end reports successful password change
+				
+				describe "reports token expiration" do
+    			let(:old_forgetter) { FactoryGirl.create(:user, password_reset_token: token, password_reset_sent_at: 5.hour.ago) }
+					let(:new_password) {"foobar"}
+					let(:new_password_confirmation) {"foobar"}
+					before do
+						visit edit_password_reset_path(old_forgetter.password_reset_token)	
+        		fill_in "Password",             						with: new_password
+       			fill_in "Password confirmation",            with: new_password_confirmation	
+						click_button "Update Password"					
+					end
 
+					it {should have_content("Password reset has expired")} 
+				end # end reports successful password change
 
 	end # end edit password page
 	
