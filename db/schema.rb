@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140105001647) do
+ActiveRecord::Schema.define(version: 20131231211734) do
 
   create_table "blogs", force: true do |t|
     t.string   "title"
@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 20140105001647) do
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["password_reset_token"], name: "index_users_on_password_reset_token", unique: true
   add_index "users", ["remember_token"], name: "index_users_on_remember_token"
 
 end
