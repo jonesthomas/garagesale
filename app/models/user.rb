@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 	#						uniqueness:true #does not account for uppercase differences
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
+
+  validates :password_reset_token, uniqueness: { case_sensitive: true }
   has_secure_password
 	validates :password, length: {minimum: 6}
 

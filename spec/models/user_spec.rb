@@ -5,6 +5,8 @@ describe User do
   before do
     @user = User.new(name: "Example User", email: "user@example.com",
                      password: "foobar", password_confirmation: "foobar")
+
+
   end
 
   subject { @user }
@@ -22,6 +24,38 @@ describe User do
 
   it { should be_valid }
   it { should_not be_admin }
+
+	describe "when password_reset_token is already taken case sensitive"  do
+		let(:token) {"KAXq4MFi2BdhprxoRxz3cQ"}
+
+		before do
+    @user2 = User.new(name: "Example User2", email: "me2@example.com",
+                     password: "foobar", password_confirmation: "foobar")
+			@user.password_reset_token = token
+			@user.password_reset_sent_at = 1.hour.ago
+			@user2.password_reset_token = token
+			@user2.password_reset_sent_at = 1.hour.ago
+			@user2.save!
+			@user.save # don't use the exclamation, it won't go into the database, as expected!
+		end
+		it {should_not be_valid}
+	end# end password reset token is taken
+
+	describe "when password_reset_token is already taken but not case sensitive"  do
+		let(:token) {"KAXq4MFi2BdhprxoRxz3cQ"}
+		let(:token2) {"KAXq4MFi2BdhprxoRxz3cq"}
+		before do
+    @user2 = User.new(name: "Example User2", email: "me2@example.com",
+                     password: "foobar", password_confirmation: "foobar")
+			@user.password_reset_token = token
+			@user.password_reset_sent_at = 1.hour.ago
+			@user2.password_reset_token = token2
+			@user2.password_reset_sent_at = 1.hour.ago
+			@user2.save!
+			@user.save # don't use the exclamation, it won't go into the database, as expected!
+		end
+		it {should be_valid}
+	end# end password reset token is taken but it's not case sensitive
 
   describe "with admin attribute set to 'true'" do
     before do
