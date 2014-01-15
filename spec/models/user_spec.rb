@@ -21,6 +21,7 @@ describe User do
   it { should respond_to(:admin) }
 	it { should respond_to(:password_reset_token) } 
 	it { should respond_to(:password_reset_sent_at) }
+	it { should respond_to(:listings) }
 
   it { should be_valid }
   it { should_not be_admin }
