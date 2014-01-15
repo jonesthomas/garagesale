@@ -150,4 +150,19 @@ describe User do
 		before {@user.password_confirmation="mismatch"}
 		it {should_not be_valid}
 	end# end password does not match
+
+  describe "listing associations" do
+
+    before { @user.save }
+    let!(:older_listing) do
+      FactoryGirl.create(:listing, user: @user, created_at: 1.day.ago)
+    end
+    let!(:newer_listing) do
+      FactoryGirl.create(:listing, user: @user, created_at: 1.hour.ago)
+    end
+
+    it "should have the right listings in the right order" do
+      expect(@user.listings.to_a).to eq [newer_listing, older_listing]
+    end
+  end # end listing associations
 end # User

@@ -18,4 +18,14 @@ FactoryGirl.define do
 		sequence(:author) {|n| "Author #{n}" }
 		body "Seeing the blog"
 	end
+
+	factory :listing do
+  	title "Lorem ipsum"
+  	user
+		specific_location "Fallbrook"
+		zip_code 90210
+		price 110.95
+		details "pretty slick."
+		active true
+	end
 end

@@ -56,4 +56,6 @@ describe Listing do
 		it {should_not be_valid}
 	end# when active is not present
 
+
+
 end
