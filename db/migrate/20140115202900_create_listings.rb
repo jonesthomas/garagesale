@@ -4,7 +4,7 @@ class CreateListings < ActiveRecord::Migration
       t.string :title
       t.integer :user_id
 			t.string :specific_location
-      t.integer :zip_code
+      t.string :zip_code
       t.decimal :price, :precision => 8, :scale => 2
       t.text :details
       t.boolean :active, default: false

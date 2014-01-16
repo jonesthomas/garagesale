@@ -99,16 +99,28 @@ describe Listing do
     it { should_not be_valid }
   end
   describe "with zip_code that is too short" do
-    before { @listing.zip_code = 1234 }
+    before { @listing.zip_code = "1234" }
     it { should_not be_valid }
   end
   describe "with zip_code that is wrong tail format" do
-    before { @listing.zip_code = 1234-123 }
+    before { @listing.zip_code = "1234-123" }
     it { should_not be_valid }
+  end
+  describe "with zip_code that is correct 5 digit" do
+    before { @listing.zip_code = "12345" }
+    it { should be_valid }
+  end
+  describe "with zip_code that is correct 5 digit and suffix" do
+    before { @listing.zip_code = "12345-1234" }
+    it { should be_valid }
   end
   describe "with price wrong format" do
     before { @listing.price = 119.015 }
     it { should_not be_valid }
+  end
+  describe "with price right format" do
+    before { @listing.price = 119.01 }
+    it { should be_valid }
   end
   describe "with details that is too long" do
     before { @listing.specific_location = "a" * 10001 }
