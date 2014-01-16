@@ -9,7 +9,7 @@ class Listing < ActiveRecord::Base
   validates :zip_code, presence: true, format: {with: VALID_ZIPCODE_FORMAT}
   validates :price, presence: true, format: {with: VALID_PRICE_FORMAT}
   validates :details, presence: true, length: { maximum: 10000 }
-  validates :active, presence: true
+
 end
 
 

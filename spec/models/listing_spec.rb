@@ -5,7 +5,7 @@ describe Listing do
   let(:user) { FactoryGirl.create(:user) }
   before do
     # This code is not idiomatically correct.
-    @listing = user.listings.build(title: "Lorem ipsum", user_id: user.id, specific_location: "Fallbrook", price: 110.10, details: "This is cool.", active:true, zip_code:90210)
+    @listing = user.listings.build(title: "Lorem ipsum", user_id: user.id, specific_location: "Fallbrook", price: 110.10, details: "This is cool.", active: false, zip_code: 90210)
   end
 
   subject { @listing }
@@ -53,7 +53,12 @@ describe Listing do
 
 	describe "when active is not present" do
 		before {@listing.active=nil}
-		it {should_not be_valid}
+		it {should be_valid}
+	end# when active is not present
+
+	describe "when on create active should be false" do
+		before {@listing2 = user.listings.build(title: "Lorem ipsum", user_id: user.id, specific_location: "Fallbrook", price: 110.10, details: "This is cool.", zip_code: 90210)} 
+		specify {expect(@listing2.active).to eq(false) }
 	end# when active is not present
 
 ###########################################Blank Content####
@@ -81,10 +86,7 @@ describe Listing do
     before { @listing.details = " " }
     it { should_not be_valid }
   end
-  describe "with blank active" do
-    before { @listing.active = " " }
-    it { should_not be_valid }
-  end
+
 #########################Content Validations ###############
   describe "with title that is too long" do
     before { @listing.title = "a" * 141 }
