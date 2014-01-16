@@ -164,5 +164,14 @@ describe User do
     it "should have the right listings in the right order" do
       expect(@user.listings.to_a).to eq [newer_listing, older_listing]
     end
+    it "should destroy associated listings" do
+      listings = @user.listings.to_a
+      @user.destroy
+      expect(listings).not_to be_empty
+      listings.each do |listing|
+        expect(Listing.where(id: listing.id)).to be_empty
+      end
+    end # end should destroy listings
+
   end # end listing associations
 end # User

@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   validates :password_reset_token, uniqueness: { case_sensitive: true }
   has_secure_password
 	validates :password, length: {minimum: 6}
-  has_many :listings
+  has_many :listings, dependent: :destroy
 
 	def User.new_remember_token
     SecureRandom.urlsafe_base64
