@@ -174,4 +174,5 @@ describe User do
     end # end should destroy listings
 
   end # end listing associations
+
 end # User

@@ -23,9 +23,9 @@ FactoryGirl.define do
   	title "Lorem ipsum"
   	user
 		specific_location "Fallbrook"
-		zip_code 90210
+		zip_code "90210"
 		price 110.95
 		details "pretty slick."
-		active true
+		active false
 	end
 end

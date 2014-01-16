@@ -31,6 +31,7 @@ class UsersController < ApplicationController
 
 	def show
     @user = User.find(params[:id])
+    @listings = @user.listings.paginate(page: params[:page])
 		#correct_user # maybe use this later if you want to limit page access to only the user
   end
 

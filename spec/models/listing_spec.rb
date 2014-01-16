@@ -59,7 +59,7 @@ describe Listing do
 	describe "when on create active should be false" do
 		before {@listing2 = user.listings.build(title: "Lorem ipsum", user_id: user.id, specific_location: "Fallbrook", price: 110.10, details: "This is cool.", zip_code: 90210)} 
 		specify {expect(@listing2.active).to eq(false) }
-	end# when active is not present
+	end# when active is not initialized
 
 ###########################################Blank Content####
   describe "with blank title" do

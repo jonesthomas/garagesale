@@ -147,5 +147,21 @@ describe "User pages" do
 		end #with valid information
 		
 	end #end signup
+  describe "profile page" do
+    let(:user) { FactoryGirl.create(:user) }
+    let!(:l1) { FactoryGirl.create(:listing, user: user, title: "Foo") }
+    let!(:l2) { FactoryGirl.create(:listing, user: user, title: "Bar") }
 
-end
+    before { visit user_path(user) }
+
+    it { should have_content(user.name) }
+    it { should have_title(user.name) }
+
+    describe "listing" do
+      it { should have_content(l1.title) }
+      it { should have_content(l2.title) }
+      it { should have_content(user.listings.count) }
+    end
+  end # end profile page
+end # end user pages
+
