@@ -56,6 +56,63 @@ describe Listing do
 		it {should_not be_valid}
 	end# when active is not present
 
-
+###########################################Blank Content####
+  describe "with blank title" do
+    before { @listing.title = " " }
+    it { should_not be_valid }
+  end
+  describe "with blank user_id" do
+    before { @listing.user_id = " " }
+    it { should_not be_valid }
+  end
+  describe "with blank specific_location" do
+    before { @listing.specific_location = " " }
+    it { should_not be_valid }
+  end
+  describe "with blank zip_code" do
+    before { @listing.zip_code = " " }
+    it { should_not be_valid }
+  end
+  describe "with blank price" do
+    before { @listing.price = " " }
+    it { should_not be_valid }
+  end
+  describe "with blank details" do
+    before { @listing.details = " " }
+    it { should_not be_valid }
+  end
+  describe "with blank active" do
+    before { @listing.active = " " }
+    it { should_not be_valid }
+  end
+#########################Content Validations ###############
+  describe "with title that is too long" do
+    before { @listing.title = "a" * 141 }
+    it { should_not be_valid }
+  end
+  describe "with specific_location that is too long" do
+    before { @listing.specific_location = "a" * 31 }
+    it { should_not be_valid }
+  end
+  describe "with zip_code that is too long" do
+    before { @listing.zip_code = 124598 }
+    it { should_not be_valid }
+  end
+  describe "with zip_code that is too short" do
+    before { @listing.zip_code = 1234 }
+    it { should_not be_valid }
+  end
+  describe "with zip_code that is wrong tail format" do
+    before { @listing.zip_code = 1234-123 }
+    it { should_not be_valid }
+  end
+  describe "with price wrong format" do
+    before { @listing.price = 119.015 }
+    it { should_not be_valid }
+  end
+  describe "with details that is too long" do
+    before { @listing.specific_location = "a" * 10001 }
+    it { should_not be_valid }
+  end
 
 end
