@@ -2,17 +2,17 @@
 <% provide(:title, @user.name) %>
 <div class="container">
 <div class="row">
-  <aside class="span4">
+  <div class="col-lg-10 col-lg-offset-1">
     <section>
       <h1>
         <%= gravatar_for @user %>
         <%= @user.name %>
       </h1>
     </section>
-  </aside>
-  <div class="span8">
+  </div>
+  <div class="aside">
     <% if @user.listings.any? %>
-      <h3>Listings (<%= @user.listings.count %>)</h3>
+      <h3>Your Listings (<%= @user.listings.count %>)</h3>
       <ol class="listings">
         <%= render @listings %>
       </ol>
